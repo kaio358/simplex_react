@@ -1,0 +1,15 @@
+.form_main{
+    width: 50%;
+    background: transparent;
+    box-shadow: 0 8px 10px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13.5px );
+    border: 2px solid white;
+    border-radius: 15px;
+    margin: auto;
+    padding: 15px 0;
+}
+
+.restricao_div{
+    display: flex;
+    justify-content: center;
+}
