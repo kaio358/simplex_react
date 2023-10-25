@@ -2,6 +2,7 @@ import Input from "../form/Input"
 import SubmitButton from "../form/SubmitButton"
 import styles from "./Caixa.module.css"
 import Opcoes from "../form/Opcoes"
+import Max_min from '../form/Max_min'
 
 
 import {useState} from "react"
@@ -23,7 +24,9 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
 
         for(let index = 0; index < quantidade; index++) {
             let linha = []
+          
             for(let i = 0; i < val ; i ++){
+              
                 if(i!= val-1){
 
                     linha.push(<Input name="teste" type="number" /> ,<h1>+</h1>)
@@ -32,8 +35,10 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
                     linha.push(<Input name="teste" type="number" />)
                 }
             }
-           
-            conjunto.push(<div className={styles.restricao_div}>{linha} <Opcoes/> </div>)
+            if(index == 0){
+                conjunto.push(<div className= {styles.restricao_div}> <Max_min/>{linha}  </div>)
+            } 
+            conjunto.push(<div className={styles.restricao_div}>{linha} <Opcoes/> <Input name="teste" type="number" /> </div> )
                 
         }
   
@@ -44,9 +49,8 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
        
         eventoQuan(restricao)
         eventoVal(variaveis)
-        // if(variaveis && restricao > 1){
-        //     console.log(variaveis , restricao);
-        // }
+     
+        
     }
     function unitario(){
         let linha = []
@@ -58,8 +62,8 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
     return(
         <div className={styles.form_main}>
             
-            <h1>Teste</h1>
-            {quantidade > 1 ? classificar(): unitario()}
+            <h1>Pesquisa Operacional</h1>
+            {quantidade > 1 ? classificar() : unitario()}
             <SubmitButton text="Proximo" evento={testar}/>
         </div>
     )
