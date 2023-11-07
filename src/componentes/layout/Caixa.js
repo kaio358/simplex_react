@@ -23,9 +23,9 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
     }
     function matriz (novo){
        
-    console.log(novo);
+    
 
-    cont[novo.className -1]  = novo.value
+        cont[novo.className -1]  = novo.value
 
     }
  
@@ -65,7 +65,7 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
     function testar() {
         
         if (quantidade >1) {
-           console.log(posicoes);
+            console.log(posicoes);
             console.log(cont);
         }else{
             eventoQuan(restricao)
