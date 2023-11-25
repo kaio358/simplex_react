@@ -5,14 +5,16 @@ import Opcoes from "../form/Opcoes"
 import Max_min from '../form/Max_min'
 
 
+import verifica from "../../comportamento/calc_simplex"
+
 import {useState} from "react"
 
-function Caixa({quantidade,eventoQuan,val,eventoVal}) {
+function Caixa({quantidade,eventoQuan,val,eventoVal,eventoRes}) {
 
     const [restricao, setRestricao] = useState(0)
     const [variaveis, setVariaveis] = useState(0)
     const [cont,setCont] = useState([])
- 
+   
 
     let posicoes = []
     function variavel(novo) {
@@ -65,8 +67,46 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
     function testar() {
         
         if (quantidade >1) {
-            console.log(posicoes);
-            console.log(cont);
+          
+            for(var i = 0; i< cont.length;i++){
+                if(cont[i] == null){
+                   cont[i] = 0
+                }
+                cont[i] = parseFloat(cont[i])
+            }
+            let matriz = []
+            var tamanhoDaLinha = parseInt(val) +1 
+            for(var i = 0; i< cont.length; i+= tamanhoDaLinha){
+
+                matriz.push(cont.slice(i, i + tamanhoDaLinha));
+            }
+            for (let index = 0; index < matriz[0].length; index++) {
+               
+                matriz[0][index] = (-matriz[0][index])
+                
+                
+            }
+            // console.log("teste",matriz);
+            
+            const colunas = matriz[0].length;
+           
+            
+            for (let i = 1; i < matriz.length; i++) {
+                matriz[0].splice(colunas - 1, 0, 0);
+                for(let j=1 ; j<matriz.length;j++){
+                    
+                    if (j == i) {
+                        matriz[i].splice(colunas - 1, 0, 0);; // Adiciona zeros para formar a matriz identidade
+                    } else {
+                        matriz[i].splice(colunas - 1, 0, 1);; // Adiciona 1 na diagonal para formar a matriz identidade
+                    }
+                }
+                
+            }
+            console.log(verifica(matriz));
+            
+            eventoRes(verifica(matriz))
+            
         }else{
             eventoQuan(restricao)
             eventoVal(variaveis)
@@ -88,6 +128,7 @@ function Caixa({quantidade,eventoQuan,val,eventoVal}) {
             <h1>Pesquisa Operacional</h1>
             {quantidade > 1 ? classificar() : unitario()}
             <SubmitButton text="Proximo" evento={testar}/>
+            
         </div>
     )
 }

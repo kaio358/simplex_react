@@ -1,0 +1,40 @@
+
+.tabela_estilo{
+    padding: 5px;
+    border: 3.5px solid #EDDEA4;
+    border-radius: 5px;
+    margin: 25px auto;
+    width: 1200px;
+    text-align: center;
+}
+.tabela_head{
+    padding: 5px;
+    background-color: #0FA3B1;
+    color: #F9F7F3;
+    height: 50px;
+}
+.tabela_head th{
+    padding: 5px;
+    
+}
+.anEsp{
+    background-color: #F7A072;
+}
+tbody tr{
+    font-weight: 300;
+    font-size: 18px;
+    background-color: #F9F7F3; 
+}
+
+
+/* tbody tr:nth-child(even) {
+    background-color: #B5E2FA; 
+}
+
+
+tbody tr:nth-child(odd) {
+  background-color: #F9F7F3; 
+} */
+
+
+
