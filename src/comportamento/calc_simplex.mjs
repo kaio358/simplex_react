@@ -20,7 +20,7 @@ function procuraPivo(matriz,posicao) {
     var atual = 9999999999999
     var pos = 0 
     for( let i= 0 ; i < matriz.length; i++ ){
-        calculo = matriz[(matriz.length -1)][posicao]/matriz[i][posicao]
+        calculo = matriz[i][(matriz[i].length -1)]/matriz[i][posicao]
         if ( (calculo< atual) &&( calculo >0 ) ){
             atual = calculo
             pos = i
@@ -91,8 +91,16 @@ function verifica(matriz) {
 //     [1,1,1,0,100],
 //     [1,3,0,1,270]
 // ]
+// var mat = [
+//     [-3,-5,0,0,0,0],
+//     [2,4,1,0,0,10],
+//     [6,1,0,1,0,20],
+//     [1,-1,0,0,1,30]
+// ]
+// console.log(menor(mat)[0]);
+// console.log(procuraPivo(mat, menor(mat)[0]));
 // console.log(verifica(mat));
 
 
-// module.exports = verifica
+
 export default verifica
