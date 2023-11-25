@@ -88,22 +88,23 @@ function Caixa({quantidade,eventoQuan,val,eventoVal,eventoRes}) {
             }
             // console.log("teste",matriz);
             
-            const colunas = matriz[0].length;
+        
            
             
             for (let i = 1; i < matriz.length; i++) {
-                matriz[0].splice(colunas - 1, 0, 0);
+                matriz[0].splice(matriz[0].length - 1, 0, 0);
                 for(let j=1 ; j<matriz.length;j++){
                     
-                    if (j == i) {
-                        matriz[i].splice(colunas - 1, 0, 0);; // Adiciona zeros para formar a matriz identidade
+                    if (j != i) {
+                        matriz[i].splice(matriz[i].length - 1, 0, 0);; // Adiciona zeros para formar a matriz identidade
                     } else {
-                        matriz[i].splice(colunas - 1, 0, 1);; // Adiciona 1 na diagonal para formar a matriz identidade
+                        matriz[i].splice(matriz[i].length - 1, 0, 1);; // Adiciona 1 na diagonal para formar a matriz identidade
                     }
                 }
                 
             }
-            console.log(verifica(matriz));
+            // console.log((matriz));
+            // console.log(verifica(matriz));
             
             eventoRes(verifica(matriz))
             

@@ -32,9 +32,10 @@ function Main(){
                 linha.push(<td>1</td>)
             }else{
                 linha.push(<td>0</td>)
+                linha_principal.push(<th>XF{i}</th>);
             }  
            
-            linha_principal.push(<th>XF{i}</th>);
+            
             for (let j = 0; j < resposta[i].length; j++) {
                 
                 linha.push(<td>{resposta[i][j]}</td>);
